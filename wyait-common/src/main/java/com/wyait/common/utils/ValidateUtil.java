@@ -6,37 +6,21 @@ import java.util.regex.Pattern;
 
 /**
  * @项目名称：wyait-manage
- * @包名：com.lyd.channel.utils
+ * @包名：com.wyait-common.utils
  * @类描述：
  * @创建人：wyait
  * @创建时间：2018-01-08 15:36
  * @version：V1.0
  */
 public class ValidateUtil {
-		// 原本：^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$
-		/**
-		 ^ ：匹配输入的开始位置。
-		 \：将下一个字符标记为特殊字符或字面值。
-		 * ：匹配前一个字符零次或几次。
-		 + ：匹配前一个字符一次或多次。
-		 (pattern) 与模式匹配并记住匹配。
-		 x|y：匹配 x 或 y。
-		 [a-z] ：表示某个范围内的字符。与指定区间内的任何字符匹配。
-		 \w ：与任何单词字符匹配，包括下划线。
-
-		 {n,m} 最少匹配 n 次且最多匹配 m 次
-		 $ ：匹配输入的结尾。
-		 或者：^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$
-		 或者：^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w{2,3}){1,3})$
-		 或者：^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$
-		 */
+		
 		private static final Pattern P_EMAIL = Pattern
 				.compile("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
 
 		/**
 		 *
 		 * @描述：校验email格式
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:38:45
 		 * @param str
 		 * @return
@@ -50,24 +34,20 @@ public class ValidateUtil {
 		public static boolean isSimplePassword(String str) {
 			return StringUtils.isNotBlank(str) && SIMPLE_PASSWORD.matcher(str).matches();
 		}
-		// 弱=数字+字母，数字+特殊字符，字母+特殊字符，数字+字母+特殊字符组合:^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).[^\u4e00-\u9fa5]{6,16}$
-		// 两种以及两种以上center：^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)(?![\W_]+$)[^\u4e00-\u9fa5]\S{6,18}$
-		// 三种以及三种以上strong:/^(?=.*((?=[\x21-\x7e]+)[^A-Za-z0-9]))(?=.*[a-zA-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{8,18}$/
-		// 三种以及三种以上superstrong:/^(?=.*((?=[\x21-\x7e]+)[^A-Za-z0-9]))(?=.*[a-zA-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{8,18}$/;
-
+		
 		private static final Pattern PASSWORD = Pattern
-				.compile("^(?![A-Z]+$)(?![a-z]+$)(?!\\d+$)(?![\\W_]+$)[^\u4e00-\u9fa5]\\S{5,17}$");
+				.compile("");
 		/*private static final Pattern YOUNG_PASSWORD = Pattern
-				.compile("^(?![A-Z]+$)(?![a-z]+$)(?!\\d+$)(?![\\W_]+$)[^\u4e00-\u9fa5]\\S{6,14}$");*/
+				.compile("");*/
 		private static final Pattern CENTER_PASSWORD = Pattern
-				.compile("^(?=.*((?=[\\x21-\\x7e]+)[^A-Za-z0-9]))(?=.*[a-zA-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{7,13}$");
+				.compile("");
 		private static final Pattern STRONG_PASSWORD = Pattern
-				.compile("^(?=.*((?=[\\x21-\\x7e]+)[^A-Za-z0-9]))(?=.*[a-zA-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{13,17}$");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：密码校验：匹配小写字母、大写字母、数字、特殊符号的两种及两种以上【非中文】
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2017年1月5日15:19:17
 		 * @param str
 		 * @return
@@ -86,13 +66,12 @@ public class ValidateUtil {
 			return str != null && STRONG_PASSWORD.matcher(str).matches();
 		}
 
-		// 原本：Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
 		private static final Pattern P_MOBILEPHONE = Pattern.compile("^1\\d{10}$");
 
 		/**
 		 *
 		 * @描述：校验是否为11位1开头手机号
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:39:01
 		 * @param str
 		 * @return
@@ -107,7 +86,7 @@ public class ValidateUtil {
 		/**
 		 *
 		 * @描述：校验是否正负数字
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:39:21
 		 * @param str
 		 * @return
@@ -122,7 +101,7 @@ public class ValidateUtil {
 		/**
 		 *
 		 * @描述：校验是否为4-12位正整数
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:39:42
 		 * @param str
 		 * @return
@@ -137,7 +116,7 @@ public class ValidateUtil {
 		/**
 		 *
 		 * @描述：校验是否为6位数字验证码
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:39:59
 		 * @param str
 		 * @return
@@ -152,7 +131,7 @@ public class ValidateUtil {
 		/**
 		 *
 		 * @描述：校验是否为4位随机正整数和字母
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:40:15
 		 * @param str
 		 * @return
@@ -162,12 +141,12 @@ public class ValidateUtil {
 		}
 
 		// 正负数（包含小数、整数）
-		private static final Pattern P_DOUBLE = Pattern.compile("^[-\\+]?[.\\d]+$");
+		private static final Pattern P_DOUBLE = Pattern.compile("");
 
 		/**
 		 *
 		 * @描述：校验是否为正负数（包含小数、整数）
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:40:53
 		 * @param str
 		 * @return
@@ -183,7 +162,7 @@ public class ValidateUtil {
 		/**
 		 *
 		 * @描述：校验是否为中文汉字
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:41:17
 		 * @param str
 		 * @return
@@ -199,7 +178,7 @@ public class ValidateUtil {
 		/**
 		 *
 		 * @描述：校验是否包含中文
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:41:32
 		 * @param str
 		 * @return
@@ -208,37 +187,14 @@ public class ValidateUtil {
 			return str != null && P_CHINESE_A.matcher(str).find();
 		}
 
-		/**
-		 * 旺旺名称校验
-		 * ^ 与字符串开始的地方匹配
-		 * (?!_)　　不能以_开头
-		 * (?!.*?_$)　　不能以_结尾
-		 * [a-zA-Z0-9_\u4e00-\u9fa5]+　　至少一个汉字、数字、字母、下划线
-		 * $　　与字符串结束的地方匹配
-		 */
-		private static final Pattern WWNAME = Pattern
-				.compile("^(?!_)(?!.*?_$)[,，\\。\\-.、；;\\：:\"“\'！!_a-zA-Z0-9_\u4e00-\u9fa5]{2,25}$");
-
-		/**
-		 *
-		 * @描述：旺旺名称校验
-		 * @创建人：王炎
-		 * @创建时间：2016年12月21日 下午1:41:49
-		 * @param str
-		 * @return
-		 */
-		public static boolean isWwname(String str) {
-			return str != null && WWNAME.matcher(str).matches();
-		}
-
 		// 搜索条件各名称校验
 		private static final Pattern NAME = Pattern
-				.compile("^(?!_)(?!.*?_$)[,，\\。\\-.、；;\\：:\"“\'！!_a-zA-Z0-9_\u4e00-\u9fa5]{1,25}$");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：搜索名称校验（字母、数字、汉字、下划线等符号）
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:41:49
 		 * @param str
 		 * @return
@@ -248,36 +204,15 @@ public class ValidateUtil {
 		}
 
 		/**
-		 * 身份证校验
-		 *  身份证15位编码规则：dddddd yymmdd xx p
-		 *	身份证18位编码规则：dddddd yyyymmdd xxx y
-		 *		dddddd：6位地区编码
-		 */
-		private static final Pattern cardID = Pattern
-				.compile("^(^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$)|(^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])((\\d{4})|\\d{3}[Xx])$)$");
-
-		/**
-		 *
-		 * @描述：身份证校验
-		 * @创建人：王炎
-		 * @创建时间：2016年12月21日 下午1:43:00
-		 * @param str
-		 * @return
-		 */
-		public static boolean isCardID(String str) {
-			return str != null && cardID.matcher(str).matches();
-		}
-
-		/**
 		 * 银行卡简单校验（16或19位）
 		 */
 		private static final Pattern BANKCODE = Pattern
-				.compile("(([1-9])[\\d]{18})|([1-9])[\\d]{15}");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：银行卡号校验
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:43:28
 		 * @param str
 		 * @return
@@ -297,16 +232,14 @@ public class ValidateUtil {
 
 		/**
 		 * 正整数、小数点后两位    金额校验
-		 * /^([1-9]\d*|0)(\.\d{1,2})?$/
-		 * ^([1-9]\d*|0)(\.\d{1,2})?$
 		 */
 		private static final Pattern MONEY = Pattern
-				.compile("^([1-9]\\d*|0)(\\.\\d{1,2})?$");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：正整数、小数点后两位    金额校验
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:44:00
 		 * @param str
 		 * @return
@@ -317,16 +250,14 @@ public class ValidateUtil {
 
 		/**
 		 * 小于等于100的正整数、小数点后两位
-		 * ^([1-9]\\d?|0)(\\.\\d{1,2})?$|100【js校验整数位无效】
-		 * js正则:^100$|^(\d|[1-9]\d)(\.\d{1,2})*$
 		 */
 		private static final Pattern BAIMONEY = Pattern
-				.compile("^([1-9]\\d?|0)(\\.\\d{1,2})?$|100");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：小于等于100的正整数、小数点后两位
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:44:00
 		 * @param str
 		 * @return
@@ -337,12 +268,12 @@ public class ValidateUtil {
 
 		// 备注校验 可输入：中英文、空格、中英文标点下划线。
 		private static final Pattern REMARK = Pattern
-				.compile("^(?!_)(?!.*?_$)[,，\\。\\-.、；;\\：:\"“\'！!\\s_a-zA-Z0-9_\u4e00-\u9fa5]{1,100}$");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：备注校验 可输入：中英文、空格、中英文标点下划线。
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月21日 下午1:44:09
 		 * @param str
 		 * @return
@@ -353,16 +284,14 @@ public class ValidateUtil {
 
 		/**
 		 * 微信号校验
-		 * /^([1-9]\d*|0)(\.\d{1,2})?$/
-		 * ^[a-zA-Z]{1}[-_a-zA-Z0-9]{5,19}+$
 		 */
 		private static final Pattern WXNUM = Pattern
-				.compile("^[a-zA-Z]{1}[-_a-zA-Z0-9]{5,19}$");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：微信号校验
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月26日17:52:08
 		 * @param str
 		 * @return
@@ -373,16 +302,14 @@ public class ValidateUtil {
 
 		/**
 		 * 用户名校验:字母、数字、中文、下划线组成2-20位【不能以下划线开头】
-		 * /^([1-9]\d*|0)(\.\d{1,2})?$/
-		 * ^[a-zA-Z]{1}[-_a-zA-Z0-9]{5,19}+$
 		 */
 		private static final Pattern USERNAME = Pattern
-				.compile("^[a-zA-Z0-9\u4e00-\u9fa5]{1}[-_a-zA-Z0-9\u4e00-\u9fa5]{1,19}$");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：用户号校验
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月26日17:52:08
 		 * @param str
 		 * @return
@@ -393,15 +320,14 @@ public class ValidateUtil {
 
 		/**
 		 * 用户名校验:字母、中文、点组成2-20位
-		 * ^[\u4e00-\u9fa5]{2,6}|(?=[a-zA-Z])[a-zA-Z\\s.]{2,20}$/g
 		 */
 		private static final Pattern REALRNAME = Pattern
-				.compile("^[\u4e00-\u9fa5]{2,6}|(?=[a-zA-Z])[a-zA-Z\\s.]{2,20}$/g");
+				.compile("");
 
 		/**
 		 *
 		 * @描述：真实姓名校验
-		 * @创建人：王炎
+		 * @创建人：wyait
 		 * @创建时间：2016年12月26日17:52:08
 		 * @param str
 		 * @return
@@ -411,25 +337,16 @@ public class ValidateUtil {
 		}
 		/**
 		 * 用户名校验:字母、中文、点组成2-20位
-		 * ^((([1-9]\\d?)|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))\\.){3}((\\d?)|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))$/g
 		 */
 		private static final Pattern ADDRIP = Pattern
-				.compile("^((([1-9]\\d?)|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))\\.){3}((\\d?)|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))$/g");
+				.compile("");
 
-		/**
-		 *
-		 * @描述：IP校验
-		 * @创建人：王炎
-		 * @创建时间：2016年12月26日17:52:08
-		 * @param str
-		 * @return
-		 */
 		public static boolean isAddrIP(String str) {
 			return str != null && ADDRIP.matcher(str).matches();
 		}
 		//只能输入两位小数的校验
 		private static final Pattern MONEY2 = Pattern
-				.compile("^(0)(\\.\\d{1,2})?$");
+				.compile("");
 
 		public static boolean isMONEY2(String str) {
 			return str != null && MONEY2.matcher(str).matches();
@@ -437,7 +354,7 @@ public class ValidateUtil {
 
 		/**年份支持1000-3999 支持横线**/
 		private static final Pattern DATE=Pattern
-				.compile("[1-3]\\d{3}(-)?((0[1-9]|1[0-2]))?(-)?(0[1-9]|1[0-9]|2[0-9]|3[0-1])?");
+				.compile("");
 		public static boolean isDate(String str){
 			return str != null && DATE.matcher(str).matches();
 		}
@@ -483,10 +400,10 @@ public class ValidateUtil {
 		System.out.println(str7 + ": " + isAddrIP(str7));
 		System.out.println(str8 + ": " + isAddrIP(str8));
 		System.out.println(str9 + ": " + isAddrIP(str9));*/
-			//		String str = "我是分手快";
+			//		String str = "我是";
 			//		String str1 = "王者";
 			//		String str2 = "Sdfs abc";
-			//		String str3 = "王炎的接口经理经历";
+			//		String str3 = "wyait的接口经理经历";
 			//		String str4 = "WW abc.fdskfsk";
 			//		String str5 = "6";
 			//		String str6 = "s";
